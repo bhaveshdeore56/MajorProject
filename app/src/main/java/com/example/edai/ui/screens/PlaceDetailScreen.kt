@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.edai.data.model.PopularPlace
 import com.example.edai.ui.viewmodel.PopularPlacesViewModel
+import com.example.edai.ui.components.VideoPlayer
+import com.example.edai.ui.components.YouTubeWebPlayer
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,12 +29,12 @@ fun PlaceDetailScreen(
     modifier: Modifier = Modifier
 ) {
     val placeDetailState by viewModel.placeDetailState.collectAsStateWithLifecycle()
-    
+
     // Load place details when screen is first displayed
     LaunchedEffect(placeId) {
         viewModel.loadPlaceDetail(placeId)
     }
-    
+
     Column(
         modifier = modifier.fillMaxSize()
     ) {
@@ -55,7 +57,7 @@ fun PlaceDetailScreen(
                 titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
             )
         )
-        
+
         when {
             placeDetailState.isLoading -> {
                 Box(
@@ -71,7 +73,7 @@ fun PlaceDetailScreen(
                     }
                 }
             }
-            
+
             placeDetailState.error != null -> {
                 Card(
                     modifier = Modifier
@@ -106,7 +108,7 @@ fun PlaceDetailScreen(
                             color = MaterialTheme.colorScheme.onErrorContainer
                         )
                         TextButton(
-                            onClick = { 
+                            onClick = {
                                 viewModel.clearPlaceDetailError()
                                 viewModel.loadPlaceDetail(placeId)
                             }
@@ -119,7 +121,7 @@ fun PlaceDetailScreen(
                     }
                 }
             }
-            
+
             placeDetailState.place != null -> {
                 PlaceDetailContent(
                     place = placeDetailState.place!!,
@@ -167,19 +169,19 @@ private fun PlaceDetailContent(
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         modifier = Modifier.weight(1f)
                     )
-                    
+
                     AssistChip(
                         onClick = { },
-                        label = { 
+                        label = {
                             Text(
                                 text = place.category,
                                 style = MaterialTheme.typography.labelMedium
-                            ) 
+                            )
                         },
                         modifier = Modifier.padding(start = 8.dp)
                     )
                 }
-                
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -196,7 +198,7 @@ private fun PlaceDetailContent(
                         color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                     )
                 }
-                
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -215,7 +217,49 @@ private fun PlaceDetailContent(
                 }
             }
         }
-        
+
+        // Video section (YouTube preferred, fallback to direct URL)
+        if (!place.youtubeId.isNullOrBlank() || !place.videoUrl.isNullOrBlank()) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Icon(
+                            Icons.Default.PlayCircleFilled,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                        Text(
+                            text = "Video Tour",
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    }
+                    if (!place.youtubeId.isNullOrBlank()) {
+                        YouTubeWebPlayer(
+                            youtubeId = place.youtubeId!!,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    } else if (!place.videoUrl.isNullOrBlank()) {
+                        VideoPlayer(
+                            videoUrl = place.videoUrl,
+                            modifier = Modifier.fillMaxWidth(),
+                            autoPlay = false,
+                            muteInitially = true
+                        )
+                    }
+                }
+            }
+        }
+
         // Description Card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -240,7 +284,7 @@ private fun PlaceDetailContent(
                         fontWeight = FontWeight.SemiBold
                     )
                 }
-                
+
                 Text(
                     text = place.description,
                     style = MaterialTheme.typography.bodyLarge,
@@ -249,7 +293,7 @@ private fun PlaceDetailContent(
                 )
             }
         }
-        
+
         // Key Facts Card
         if (place.keyFacts.isNotEmpty()) {
             Card(
@@ -275,7 +319,7 @@ private fun PlaceDetailContent(
                             fontWeight = FontWeight.SemiBold
                         )
                     }
-                    
+
                     Column(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
@@ -301,7 +345,7 @@ private fun PlaceDetailContent(
                 }
             }
         }
-        
+
         // Location Card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -326,7 +370,7 @@ private fun PlaceDetailContent(
                         fontWeight = FontWeight.SemiBold
                     )
                 }
-                
+
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
@@ -339,9 +383,9 @@ private fun PlaceDetailContent(
                         text = place.address,
                         style = MaterialTheme.typography.bodyMedium
                     )
-                    
+
                     Spacer(modifier = Modifier.height(4.dp))
-                    
+
                     Text(
                         text = "Coordinates:",
                         style = MaterialTheme.typography.labelLarge,
@@ -360,7 +404,7 @@ private fun PlaceDetailContent(
                 }
             }
         }
-        
+
         // Quiz Section
         if (place.quiz.isNotEmpty()) {
             Card(
@@ -398,14 +442,14 @@ private fun PlaceDetailContent(
                             )
                         }
                     }
-                    
+
                     Text(
                         text = "Challenge yourself with interesting questions about ${place.name}'s history, facts, and significance. Test what you've learned and discover new insights!",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSecondaryContainer,
                         textAlign = TextAlign.Justify
                     )
-                    
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -426,7 +470,7 @@ private fun PlaceDetailContent(
                                 color = MaterialTheme.colorScheme.onSecondaryContainer
                             )
                         }
-                        
+
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(4.dp)
@@ -444,7 +488,7 @@ private fun PlaceDetailContent(
                             )
                         }
                     }
-                    
+
                     Button(
                         onClick = {
                             // Navigate to quiz for this specific place

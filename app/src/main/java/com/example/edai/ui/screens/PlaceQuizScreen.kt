@@ -567,7 +567,7 @@ private fun QuizResultsContent(
             }
         }
 
-+
+
         // Detailed Results
         Card(
             modifier = Modifier.fillMaxWidth(),

@@ -24,6 +24,12 @@ data class PopularPlace(
     val established: String,
     @SerializedName("keyFacts")
     val keyFacts: List<String>,
+    // Optional streaming video URL to display on the detail screen
+    @SerializedName("videoUrl")
+    val videoUrl: String? = null,
+    // Optional YouTube video ID to render via WebView/YouTube embed
+    @SerializedName("youtubeId")
+    val youtubeId: String? = null,
     @SerializedName("quiz")
     val quiz: List<PlaceQuizQuestion>
 )
