@@ -1,0 +1,1054 @@
+{
+  "places": [
+    {
+      "id": 1,
+      "name": "Pune Airport (Lohegaon Airport)",
+      "category": "Transportation",
+      "description": "Pune Airport, officially known as Pune International Airport, is located in Lohegaon, about 10 km northeast of Pune city center. It serves as a major gateway to the city and handles both domestic and international flights. The airport has been modernized in recent years and features state-of-the-art facilities.",
+      "address": "Airport Road, Lohegaon, Pune, Maharashtra 411014",
+      "coordinates": {
+        "latitude": 18.5820,
+        "longitude": 73.9197
+      },
+      "established": "1939",
+      "keyFacts": [
+        "Originally built during British colonial era for military purposes",
+        "Handles over 7 million passengers annually",
+        "Has both domestic and international terminals",
+        "Second busiest airport in Maharashtra after Mumbai"
+      ],
+      "quiz": [
+        {
+          "question": "In which year was Pune Airport originally established?",
+          "options": ["1935", "1939", "1942", "1947"],
+          "correctAnswer": 1,
+          "explanation": "Pune Airport was originally established in 1939 during the British colonial period for military purposes."
+        },
+        {
+          "question": "What is the official name of Pune Airport?",
+          "options": ["Pune Domestic Airport", "Pune International Airport", "Lohegaon Airport", "Maharashtra Airport"],
+          "correctAnswer": 1,
+          "explanation": "The official name is Pune International Airport, though it's commonly referred to as Lohegaon Airport."
+        },
+        {
+          "question": "Approximately how far is Pune Airport from the city center?",
+          "options": ["5 km", "10 km", "15 km", "20 km"],
+          "correctAnswer": 1,
+          "explanation": "Pune Airport is located about 10 kilometers northeast of Pune city center."
+        },
+        {
+          "question": "Which state is Pune Airport the second busiest in?",
+          "options": ["Gujarat", "Karnataka", "Maharashtra", "Rajasthan"],
+          "correctAnswer": 2,
+          "explanation": "Pune Airport is the second busiest airport in Maharashtra, after Mumbai."
+        },
+        {
+          "question": "What type of flights does Pune Airport handle?",
+          "options": ["Only domestic", "Only international", "Both domestic and international", "Only cargo"],
+          "correctAnswer": 2,
+          "explanation": "Pune Airport handles both domestic and international passenger flights."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Pune General Post Office",
+      "category": "Government Office",
+      "description": "The Pune General Post Office (GPO) is a historic postal facility located in the heart of Pune city. It serves as the main postal hub for the region and is an important landmark. The building showcases colonial architecture and has been serving the postal needs of Pune residents for decades.",
+      "address": "Sadashiv Peth, Pune, Maharashtra 411030",
+      "coordinates": {
+        "latitude": 18.5074,
+        "longitude": 73.8521
+      },
+      "established": "1858",
+      "keyFacts": [
+        "One of the oldest post offices in Western India",
+        "Features beautiful colonial architecture",
+        "Handles over 10,000 postal transactions daily",
+        "Serves as regional postal headquarters"
+      ],
+      "quiz": [
+        {
+          "question": "In which area of Pune is the General Post Office located?",
+          "options": ["Shivajinagar", "Sadashiv Peth", "Camp Area", "Kothrud"],
+          "correctAnswer": 1,
+          "explanation": "The Pune General Post Office is located in Sadashiv Peth area."
+        },
+        {
+          "question": "When was the Pune General Post Office established?",
+          "options": ["1850", "1858", "1865", "1870"],
+          "correctAnswer": 1,
+          "explanation": "The Pune General Post Office was established in 1858 during the British colonial period."
+        },
+        {
+          "question": "What architectural style does the GPO building represent?",
+          "options": ["Modern", "Mughal", "Colonial", "Art Deco"],
+          "correctAnswer": 2,
+          "explanation": "The GPO building showcases colonial architecture from the British era."
+        },
+        {
+          "question": "Approximately how many postal transactions does the GPO handle daily?",
+          "options": ["5,000", "10,000", "15,000", "20,000"],
+          "correctAnswer": 1,
+          "explanation": "The Pune GPO handles over 10,000 postal transactions daily."
+        },
+        {
+          "question": "What is the significance of Pune GPO in the region?",
+          "options": ["Tourist attraction only", "Regional postal headquarters", "Shopping center", "Cultural center"],
+          "correctAnswer": 1,
+          "explanation": "The Pune GPO serves as the regional postal headquarters for the area."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Pune Municipal Corporation Office",
+      "category": "Government Office",
+      "description": "The Pune Municipal Corporation (PMC) headquarters is the main administrative center for Pune city's civic governance. Located in the heart of the city, this building houses various departments responsible for city planning, infrastructure, water supply, waste management, and other municipal services.",
+      "address": "PMC Building, Shivajinagar, Pune, Maharashtra 411005",
+      "coordinates": {
+        "latitude": 18.5314,
+        "longitude": 73.8446
+      },
+      "established": "1950",
+      "keyFacts": [
+        "Governs an area of over 500 square kilometers",
+        "Serves a population of over 3 million people",
+        "Handles city planning and development",
+        "Manages water supply and waste management for the city"
+      ],
+      "quiz": [
+        {
+          "question": "What does PMC stand for?",
+          "options": ["Pune Metro Corporation", "Pune Municipal Corporation", "Pune Management Corporation", "Pune Modern Corporation"],
+          "correctAnswer": 1,
+          "explanation": "PMC stands for Pune Municipal Corporation, the civic body governing Pune city."
+        },
+        {
+          "question": "In which area is the PMC headquarters located?",
+          "options": ["Camp", "Shivajinagar", "Kothrud", "Hadapsar"],
+          "correctAnswer": 1,
+          "explanation": "The PMC headquarters is located in Shivajinagar area of Pune."
+        },
+        {
+          "question": "Approximately what population does PMC serve?",
+          "options": ["2 million", "3 million", "4 million", "5 million"],
+          "correctAnswer": 1,
+          "explanation": "The Pune Municipal Corporation serves a population of over 3 million people."
+        },
+        {
+          "question": "What area does PMC govern?",
+          "options": ["300 sq km", "400 sq km", "500 sq km", "600 sq km"],
+          "correctAnswer": 2,
+          "explanation": "PMC governs an area of over 500 square kilometers."
+        },
+        {
+          "question": "When was the PMC established in its current form?",
+          "options": ["1947", "1950", "1955", "1960"],
+          "correctAnswer": 1,
+          "explanation": "The Pune Municipal Corporation was established in its current form in 1950."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Shaniwar Wada",
+      "category": "Tourist Place",
+      "description": "Shaniwar Wada is a historic palace and fort built by the Peshwas of the Maratha Empire. Located in the heart of Pune, it served as the seat of power for the Peshwa rulers. Though much of the original structure was destroyed in a fire, the remaining walls and gates showcase the grandeur of Maratha architecture.",
+      "address": "Shaniwar Peth, Pune, Maharashtra 411002",
+      "coordinates": {
+        "latitude": 18.5196,
+        "longitude": 73.8553
+      },
+      "established": "1732",
+      "keyFacts": [
+        "Built by Peshwa Baji Rao I in 1732",
+        "Served as the administrative headquarters of the Maratha Empire",
+        "Famous for its grand gates and impressive fortification",
+        "Site of the mysterious death of young Peshwa Narayanrao"
+      ],
+      "quiz": [
+        {
+          "question": "Who built Shaniwar Wada?",
+          "options": ["Shivaji Maharaj", "Peshwa Baji Rao I", "Peshwa Balaji Vishwanath", "Chimaji Appa"],
+          "correctAnswer": 1,
+          "explanation": "Shaniwar Wada was built by Peshwa Baji Rao I in 1732."
+        },
+        {
+          "question": "In which year was Shaniwar Wada built?",
+          "options": ["1730", "1732", "1735", "1740"],
+          "correctAnswer": 1,
+          "explanation": "Shaniwar Wada was built in 1732 by Peshwa Baji Rao I."
+        },
+        {
+          "question": "What was Shaniwar Wada primarily used for?",
+          "options": ["Religious ceremonies", "Administrative headquarters", "Military barracks", "Royal residence only"],
+          "correctAnswer": 1,
+          "explanation": "Shaniwar Wada served as the administrative headquarters of the Maratha Empire."
+        },
+        {
+          "question": "Which empire did Shaniwar Wada serve as the seat of power for?",
+          "options": ["Mughal Empire", "British Empire", "Maratha Empire", "Deccan Sultanate"],
+          "correctAnswer": 2,
+          "explanation": "Shaniwar Wada served as the seat of power for the Maratha Empire under the Peshwas."
+        },
+        {
+          "question": "What happened to much of the original Shaniwar Wada structure?",
+          "options": ["Earthquake damage", "Destroyed by fire", "British demolition", "Natural decay"],
+          "correctAnswer": 1,
+          "explanation": "Much of the original Shaniwar Wada structure was destroyed in a fire, leaving mainly the walls and gates."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Aga Khan Palace",
+      "category": "Tourist Place",
+      "description": "Aga Khan Palace is a magnificent monument built by Sultan Muhammed Shah Aga Khan III in 1892. This historic palace is famous for being the prison where Mahatma Gandhi, his wife Kasturba Gandhi, and other freedom fighters were held during the Quit India Movement. Today, it serves as a memorial to Gandhi and houses a museum.",
+      "address": "Aga Khan Palace Road, Yerwada, Pune, Maharashtra 411006",
+      "coordinates": {
+        "latitude": 18.5525,
+        "longitude": 73.8956
+      },
+      "established": "1892",
+      "keyFacts": [
+        "Built by Sultan Muhammed Shah Aga Khan III",
+        "Served as prison for Mahatma Gandhi during Quit India Movement",
+        "Site where Kasturba Gandhi and Mahadev Desai died",
+        "Now serves as a Gandhi Memorial and Museum"
+      ],
+      "quiz": [
+        {
+          "question": "Who built the Aga Khan Palace?",
+          "options": ["Aga Khan II", "Sultan Muhammed Shah Aga Khan III", "Aga Khan IV", "British Government"],
+          "correctAnswer": 1,
+          "explanation": "Aga Khan Palace was built by Sultan Muhammed Shah Aga Khan III in 1892."
+        },
+        {
+          "question": "When was Aga Khan Palace built?",
+          "options": ["1890", "1892", "1895", "1900"],
+          "correctAnswer": 1,
+          "explanation": "The Aga Khan Palace was built in 1892."
+        },
+        {
+          "question": "During which movement was Gandhi imprisoned at Aga Khan Palace?",
+          "options": ["Non-Cooperation Movement", "Salt Satyagraha", "Quit India Movement", "Khilafat Movement"],
+          "correctAnswer": 2,
+          "explanation": "Gandhi was imprisoned at Aga Khan Palace during the Quit India Movement in 1942."
+        },
+        {
+          "question": "Who died at Aga Khan Palace during Gandhi's imprisonment?",
+          "options": ["Only Kasturba Gandhi", "Only Mahadev Desai", "Both Kasturba Gandhi and Mahadev Desai", "No one died there"],
+          "correctAnswer": 2,
+          "explanation": "Both Kasturba Gandhi (Gandhi's wife) and Mahadev Desai (Gandhi's secretary) died at Aga Khan Palace during their imprisonment."
+        },
+        {
+          "question": "What is Aga Khan Palace used for today?",
+          "options": ["Royal residence", "Government office", "Gandhi Memorial and Museum", "Hotel"],
+          "correctAnswer": 2,
+          "explanation": "Today, Aga Khan Palace serves as a Gandhi Memorial and Museum, commemorating the freedom struggle."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Sinhagad Fort",
+      "category": "Tourist Place",
+      "description": "Sinhagad Fort is a historic hill fortress located about 30 km southwest of Pune. Originally called Kondana, it was renamed Sinhagad (Lion's Fort) after the heroic Maratha warrior Tanaji Malusare died while capturing it from the Mughals. The fort offers stunning views of the surrounding countryside and is a popular trekking destination.",
+      "address": "Sinhagad Road, Thoptewadi, Pune, Maharashtra 411025",
+      "coordinates": {
+        "latitude": 18.3664,
+        "longitude": 73.7556
+      },
+      "established": "2nd Century BCE",
+      "keyFacts": [
+        "Originally known as Kondana Fort",
+        "Scene of the famous battle where Tanaji Malusare died",
+        "Offers panoramic views of Pune and surrounding areas",
+        "Popular trekking and tourist destination"
+      ],
+      "quiz": [
+        {
+          "question": "What was the original name of Sinhagad Fort?",
+          "options": ["Rajgad", "Kondana", "Purandar", "Torna"],
+          "correctAnswer": 1,
+          "explanation": "Sinhagad Fort was originally called Kondana, before being renamed after Tanaji Malusare's heroic battle."
+        },
+        {
+          "question": "Who was the Maratha warrior associated with Sinhagad Fort?",
+          "options": ["Tanaji Malusare", "Baji Prabhu Deshpande", "Netaji Palkar", "Yesaji Kank"],
+          "correctAnswer": 0,
+          "explanation": "Tanaji Malusare was the heroic Maratha warrior who died while capturing Sinhagad from the Mughals."
+        },
+        {
+          "question": "What does 'Sinhagad' mean?",
+          "options": ["Tiger's Fort", "Lion's Fort", "Eagle's Fort", "Warrior's Fort"],
+          "correctAnswer": 1,
+          "explanation": "Sinhagad means 'Lion's Fort', named in honor of the lion-hearted Tanaji Malusare."
+        },
+        {
+          "question": "Approximately how far is Sinhagad Fort from Pune?",
+          "options": ["20 km", "30 km", "40 km", "50 km"],
+          "correctAnswer": 1,
+          "explanation": "Sinhagad Fort is located about 30 kilometers southwest of Pune."
+        },
+        {
+          "question": "When was Sinhagad Fort originally established?",
+          "options": ["1st Century BCE", "2nd Century BCE", "1st Century CE", "2nd Century CE"],
+          "correctAnswer": 1,
+          "explanation": "Sinhagad Fort was originally established in the 2nd Century BCE, making it over 2000 years old."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Indian Institute of Technology Bombay (IIT Bombay)",
+      "category": "Educational Institute",
+      "description": "IIT Bombay is one of India's premier technological institutes and among the most prestigious engineering colleges in the country. Located in Powai, Mumbai, it has strong connections with Pune through research collaborations and many alumni. Though not physically in Pune, it's relevant due to the significant student and professional connections.",
+      "address": "Powai, Mumbai, Maharashtra 400076",
+      "coordinates": {
+        "latitude": 19.1334,
+        "longitude": 72.9133
+      },
+      "established": "1958",
+      "keyFacts": [
+        "One of the original five IITs established in India",
+        "Consistently ranked among top engineering institutes globally",
+        "Strong alumni network including many CEOs and entrepreneurs",
+        "Collaborates with Pune-based industries and research institutions"
+      ],
+      "quiz": [
+        {
+          "question": "When was IIT Bombay established?",
+          "options": ["1956", "1958", "1960", "1961"],
+          "correctAnswer": 1,
+          "explanation": "IIT Bombay was established in 1958 as one of the original five IITs in India."
+        },
+        {
+          "question": "Where is IIT Bombay located?",
+          "options": ["Bandra, Mumbai", "Powai, Mumbai", "Andheri, Mumbai", "Pune"],
+          "correctAnswer": 1,
+          "explanation": "IIT Bombay is located in Powai, Mumbai, Maharashtra."
+        },
+        {
+          "question": "How many original IITs were established in India?",
+          "options": ["4", "5", "6", "7"],
+          "correctAnswer": 1,
+          "explanation": "IIT Bombay was one of the original five IITs established in India."
+        },
+        {
+          "question": "What is IIT Bombay primarily known for?",
+          "options": ["Medical education", "Engineering and technology", "Arts and literature", "Business studies"],
+          "correctAnswer": 1,
+          "explanation": "IIT Bombay is primarily known for engineering and technology education and research."
+        },
+        {
+          "question": "What is notable about IIT Bombay's alumni?",
+          "options": ["All become teachers", "Many become CEOs and entrepreneurs", "All work in government", "All stay in academia"],
+          "correctAnswer": 1,
+          "explanation": "IIT Bombay has a strong alumni network including many successful CEOs, entrepreneurs, and industry leaders."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "College of Engineering Pune (COEP)",
+      "category": "Educational Institute",
+      "description": "College of Engineering Pune (COEP) is one of India's oldest and most prestigious engineering institutions. Established in 1854, it has a rich legacy of producing distinguished engineers and technologists. Located on the banks of the Mula river, the college has historic buildings and has contributed significantly to India's industrial development.",
+      "address": "Wellesley Road, Shivajinagar, Pune, Maharashtra 411005",
+      "coordinates": {
+        "latitude": 18.5314,
+        "longitude": 73.837
+      },
+      "established": "1854",
+      "keyFacts": [
+        "Third oldest engineering college in India",
+        "Established during British rule in 1854",
+        "Located on the scenic banks of Mula river",
+        "Alumni include prominent industrialists and engineers"
+      ],
+      "quiz": [
+        {
+          "question": "When was COEP established?",
+          "options": ["1850", "1854", "1858", "1860"],
+          "correctAnswer": 1,
+          "explanation": "College of Engineering Pune (COEP) was established in 1854."
+        },
+        {
+          "question": "What is the rank of COEP among India's engineering colleges by age?",
+          "options": ["Second oldest", "Third oldest", "Fourth oldest", "Fifth oldest"],
+          "correctAnswer": 1,
+          "explanation": "COEP is the third oldest engineering college in India."
+        },
+        {
+          "question": "On which river's bank is COEP located?",
+          "options": ["Godavari", "Mula", "Bhima", "Krishna"],
+          "correctAnswer": 1,
+          "explanation": "COEP is located on the scenic banks of the Mula river in Pune."
+        },
+        {
+          "question": "In which area of Pune is COEP located?",
+          "options": ["Camp", "Shivajinagar", "Kothrud", "Hadapsar"],
+          "correctAnswer": 1,
+          "explanation": "COEP is located in the Shivajinagar area of Pune."
+        },
+        {
+          "question": "During whose rule was COEP established?",
+          "options": ["Maratha rule", "Mughal rule", "British rule", "Independent India"],
+          "correctAnswer": 2,
+          "explanation": "COEP was established in 1854 during British colonial rule in India."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Armed Forces Medical College (AFMC)",
+      "category": "Educational Institute",
+      "description": "Armed Forces Medical College (AFMC) is a premier medical institution in Pune that trains medical officers for the Indian Armed Forces. Established in 1962, it is known for its excellent medical education, state-of-the-art facilities, and discipline. The college has produced many distinguished military doctors and medical researchers.",
+      "address": "Wanowrie, Pune, Maharashtra 411040",
+      "coordinates": {
+        "latitude": 18.4655,
+        "longitude": 73.8803
+      },
+      "established": "1962",
+      "keyFacts": [
+        "Premier medical college for Indian Armed Forces",
+        "Known for discipline and excellent medical training",
+        "Produces medical officers for Army, Navy, and Air Force",
+        "Has state-of-the-art medical facilities and research centers"
+      ],
+      "quiz": [
+        {
+          "question": "When was AFMC established?",
+          "options": ["1960", "1962", "1965", "1970"],
+          "correctAnswer": 1,
+          "explanation": "Armed Forces Medical College (AFMC) was established in 1962."
+        },
+        {
+          "question": "What does AFMC stand for?",
+          "options": ["Armed Forces Medical Center", "Armed Forces Medical College", "Army Forces Medical College", "All Forces Medical College"],
+          "correctAnswer": 1,
+          "explanation": "AFMC stands for Armed Forces Medical College."
+        },
+        {
+          "question": "Which branches of armed forces does AFMC train doctors for?",
+          "options": ["Only Army", "Only Navy", "Army, Navy, and Air Force", "Only Air Force"],
+          "correctAnswer": 2,
+          "explanation": "AFMC trains medical officers for all three branches: Army, Navy, and Air Force."
+        },
+        {
+          "question": "In which area of Pune is AFMC located?",
+          "options": ["Wanowrie", "Camp", "Shivajinagar", "Kothrud"],
+          "correctAnswer": 0,
+          "explanation": "AFMC is located in Wanowrie area of Pune."
+        },
+        {
+          "question": "What is AFMC particularly known for?",
+          "options": ["Research only", "Discipline and excellent medical training", "Sports activities", "Cultural programs"],
+          "correctAnswer": 1,
+          "explanation": "AFMC is particularly known for its discipline and excellent medical training."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Pune University (Savitribai Phule Pune University)",
+      "category": "Educational Institute",
+      "description": "Savitribai Phule Pune University (SPPU), formerly known as University of Pune, is a premier public research university. Established in 1949, it has a sprawling campus and is one of India's largest universities by student enrollment. The university is named after Savitribai Phule, a pioneer in women's education.",
+      "address": "Ganeshkhind Road, Pune, Maharashtra 411007",
+      "coordinates": {
+        "latitude": 18.5506,
+        "longitude": 73.8264
+      },
+      "established": "1949",
+      "keyFacts": [
+        "Established in 1949, one of India's premier universities",
+        "Named after Savitribai Phule, pioneer of women's education",
+        "One of India's largest universities by enrollment",
+        "Sprawling campus with diverse academic programs"
+      ],
+      "quiz": [
+        {
+          "question": "When was Pune University established?",
+          "options": ["1947", "1949", "1950", "1952"],
+          "correctAnswer": 1,
+          "explanation": "Pune University was established in 1949."
+        },
+        {
+          "question": "What is the current official name of Pune University?",
+          "options": ["University of Pune", "Pune University", "Savitribai Phule Pune University", "Maharashtra University"],
+          "correctAnswer": 2,
+          "explanation": "The current official name is Savitribai Phule Pune University (SPPU)."
+        },
+        {
+          "question": "Who was Savitribai Phule?",
+          "options": ["A freedom fighter", "A pioneer in women's education", "A scientist", "A politician"],
+          "correctAnswer": 1,
+          "explanation": "Savitribai Phule was a pioneer in women's education and social reform in 19th century India."
+        },
+        {
+          "question": "What is notable about SPPU's student enrollment?",
+          "options": ["Very small", "One of India's largest", "Only graduate students", "Only undergraduate students"],
+          "correctAnswer": 1,
+          "explanation": "SPPU is one of India's largest universities by student enrollment."
+        },
+        {
+          "question": "On which road is the main campus of SPPU located?",
+          "options": ["JM Road", "Ganeshkhind Road", "FC Road", "Karve Road"],
+          "correctAnswer": 1,
+          "explanation": "The main campus of SPPU is located on Ganeshkhind Road in Pune."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Osho Ashram (Osho International Meditation Resort)",
+      "category": "Tourist Place",
+      "description": "The Osho Ashram, officially known as Osho International Meditation Resort, is a spiritual center founded by the spiritual teacher Osho (Rajneesh). Located in Koregaon Park, it attracts visitors from around the world seeking meditation and spiritual experiences. The resort offers various meditation programs, workshops, and facilities.",
+      "address": "17 Koregaon Park, Pune, Maharashtra 411001",
+      "coordinates": {
+        "latitude": 18.5362,
+        "longitude": 73.895
+      },
+      "established": "1974",
+      "keyFacts": [
+        "Founded by spiritual teacher Osho (Rajneesh)",
+        "Attracts international visitors for meditation",
+        "Offers various meditation techniques and workshops",
+        "Located in the upmarket Koregaon Park area"
+      ],
+      "quiz": [
+        {
+          "question": "Who founded the Osho Ashram?",
+          "options": ["Osho (Rajneesh)", "Maharishi Mahesh Yogi", "Sri Aurobindo", "Swami Vivekananda"],
+          "correctAnswer": 0,
+          "explanation": "The Osho Ashram was founded by the spiritual teacher Osho (Rajneesh)."
+        },
+        {
+          "question": "What is the official name of Osho Ashram?",
+          "options": ["Osho Ashram", "Rajneesh Ashram", "Osho International Meditation Resort", "Pune Meditation Center"],
+          "correctAnswer": 2,
+          "explanation": "The official name is Osho International Meditation Resort."
+        },
+        {
+          "question": "In which area of Pune is the Osho Ashram located?",
+          "options": ["Camp", "Shivajinagar", "Koregaon Park", "Kothrud"],
+          "correctAnswer": 2,
+          "explanation": "The Osho Ashram is located in Koregaon Park area of Pune."
+        },
+        {
+          "question": "When was the Osho Ashram established?",
+          "options": ["1970", "1974", "1978", "1980"],
+          "correctAnswer": 1,
+          "explanation": "The Osho Ashram was established in 1974."
+        },
+        {
+          "question": "What type of visitors does the Osho Ashram primarily attract?",
+          "options": ["Only Indian visitors", "International visitors seeking meditation", "Business travelers", "Adventure tourists"],
+          "correctAnswer": 1,
+          "explanation": "The Osho Ashram primarily attracts international visitors seeking meditation and spiritual experiences."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Dagdusheth Halwai Ganpati Temple",
+      "category": "Tourist Place",
+      "description": "Dagdusheth Halwai Ganpati Temple is one of the most famous and richest temples in Pune. Built in 1893 by sweet merchant Dagdusheth Halwai after losing his son to plague, this temple is dedicated to Lord Ganesha. The temple is especially famous during Ganesh Chaturthi celebrations and attracts millions of devotees.",
+      "address": "Budhwar Peth, Pune, Maharashtra 411002",
+      "coordinates": {
+        "latitude": 18.5158,
+        "longitude": 73.8498
+      },
+      "established": "1893",
+      "keyFacts": [
+        "Built by sweet merchant Dagdusheth Halwai in 1893",
+        "One of the richest temples in Pune",
+        "Famous for elaborate Ganesh Chaturthi celebrations",
+        "Attracts millions of devotees annually"
+      ],
+      "quiz": [
+        {
+          "question": "Who built the Dagdusheth Halwai Ganpati Temple?",
+          "options": ["A king", "Dagdusheth Halwai", "British officials", "Peshwa rulers"],
+          "correctAnswer": 1,
+          "explanation": "The temple was built by Dagdusheth Halwai, a sweet merchant, in 1893."
+        },
+        {
+          "question": "When was Dagdusheth Halwai Ganpati Temple built?",
+          "options": ["1890", "1893", "1895", "1900"],
+          "correctAnswer": 1,
+          "explanation": "The Dagdusheth Halwai Ganpati Temple was built in 1893."
+        },
+        {
+          "question": "Why did Dagdusheth Halwai build this temple?",
+          "options": ["For business prosperity", "After losing his son to plague", "Royal order", "Religious vision"],
+          "correctAnswer": 1,
+          "explanation": "Dagdusheth Halwai built this temple after losing his son to plague."
+        },
+        {
+          "question": "Which deity is worshipped in this temple?",
+          "options": ["Lord Shiva", "Lord Vishnu", "Lord Ganesha", "Goddess Durga"],
+          "correctAnswer": 2,
+          "explanation": "The temple is dedicated to Lord Ganesha."
+        },
+        {
+          "question": "In which area of Pune is this temple located?",
+          "options": ["Camp", "Budhwar Peth", "Shivajinagar", "Kothrud"],
+          "correctAnswer": 1,
+          "explanation": "The Dagdusheth Halwai Ganpati Temple is located in Budhwar Peth."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Chaturshringi Temple",
+      "category": "Tourist Place",
+      "description": "Chaturshringi Temple is an ancient temple dedicated to Goddess Chaturshringi, located on a hill in Pune. The temple is believed to be over 1,400 years old and is one of the most important spiritual centers in Pune. The temple offers panoramic views of the city and is especially crowded during Navratri.",
+      "address": "Senapati Bapat Road, Pune, Maharashtra 411016",
+      "coordinates": {
+        "latitude": 18.5362,
+        "longitude": 73.8203
+      },
+      "established": "6th Century CE",
+      "keyFacts": [
+        "Over 1,400 years old ancient temple",
+        "Dedicated to Goddess Chaturshringi",
+        "Located on a hill with city views",
+        "Major pilgrimage site during Navratri"
+      ],
+      "quiz": [
+        {
+          "question": "How old is the Chaturshringi Temple approximately?",
+          "options": ["500 years", "800 years", "1,400 years", "2,000 years"],
+          "correctAnswer": 2,
+          "explanation": "The Chaturshringi Temple is believed to be over 1,400 years old."
+        },
+        {
+          "question": "Which goddess is worshipped at Chaturshringi Temple?",
+          "options": ["Goddess Durga", "Goddess Chaturshringi", "Goddess Lakshmi", "Goddess Saraswati"],
+          "correctAnswer": 1,
+          "explanation": "The temple is dedicated to Goddess Chaturshringi."
+        },
+        {
+          "question": "When is the temple especially crowded?",
+          "options": ["Diwali", "Navratri", "Holi", "Ganesh Chaturthi"],
+          "correctAnswer": 1,
+          "explanation": "The temple is especially crowded during Navratri celebrations."
+        },
+        {
+          "question": "What can visitors enjoy from the temple location?",
+          "options": ["Beach views", "Mountain views", "Panoramic city views", "River views"],
+          "correctAnswer": 2,
+          "explanation": "The temple, being located on a hill, offers panoramic views of Pune city."
+        },
+        {
+          "question": "In which century was the temple established?",
+          "options": ["4th Century CE", "6th Century CE", "8th Century CE", "10th Century CE"],
+          "correctAnswer": 1,
+          "explanation": "The Chaturshringi Temple was established in the 6th Century CE."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "National Institute of Technology Karnataka (NITK)",
+      "category": "Educational Institute",
+      "description": "While NITK is located in Surathkal, Karnataka, it's included due to its strong connections with Pune's IT industry and many alumni working in Pune. NITK is one of India's premier engineering institutes, established in 1960. It's known for excellence in engineering education and research.",
+      "address": "Surathkal, Karnataka 575025",
+      "coordinates": {
+        "latitude": 13.0067,
+        "longitude": 74.7939
+      },
+      "established": "1960",
+      "keyFacts": [
+        "One of India's premier National Institutes of Technology",
+        "Strong alumni network in Pune's IT industry",
+        "Known for engineering excellence and research",
+        "Collaborates with Pune-based industries"
+      ],
+      "quiz": [
+        {
+          "question": "When was NITK established?",
+          "options": ["1958", "1960", "1962", "1965"],
+          "correctAnswer": 1,
+          "explanation": "NITK was established in 1960."
+        },
+        {
+          "question": "Where is NITK located?",
+          "options": ["Pune, Maharashtra", "Surathkal, Karnataka", "Bangalore, Karnataka", "Mumbai, Maharashtra"],
+          "correctAnswer": 1,
+          "explanation": "NITK is located in Surathkal, Karnataka."
+        },
+        {
+          "question": "What does NITK stand for?",
+          "options": ["National Institute of Technology Kerala", "National Institute of Technology Karnataka", "National Indian Technology Karnataka", "New Institute of Technology Karnataka"],
+          "correctAnswer": 1,
+          "explanation": "NITK stands for National Institute of Technology Karnataka."
+        },
+        {
+          "question": "Why is NITK relevant to Pune?",
+          "options": ["It's located in Pune", "Strong alumni network in Pune's IT industry", "It's a branch of Pune University", "It was established by Pune government"],
+          "correctAnswer": 1,
+          "explanation": "NITK is relevant to Pune due to its strong alumni network working in Pune's IT industry."
+        },
+        {
+          "question": "What is NITK primarily known for?",
+          "options": ["Medical education", "Engineering excellence and research", "Arts and literature", "Business studies"],
+          "correctAnswer": 1,
+          "explanation": "NITK is primarily known for engineering excellence and research."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Symbiosis International University",
+      "category": "Educational Institute",
+      "description": "Symbiosis International University (SIU) is a leading private university in Pune, established in 2002. Known for its diverse academic programs, international collaborations, and modern campus facilities. SIU has multiple campuses in Pune and offers programs in management, law, engineering, media, and other fields.",
+      "address": "Gram: Lavale, Tal: Mulshi, Pune, Maharashtra 412115",
+      "coordinates": {
+        "latitude": 18.6161,
+        "longitude": 73.7286
+      },
+      "established": "2002",
+      "keyFacts": [
+        "Leading private university established in 2002",
+        "Multiple campuses across Pune",
+        "Strong international collaborations",
+        "Diverse programs in management, law, engineering, media"
+      ],
+      "quiz": [
+        {
+          "question": "When was Symbiosis International University established?",
+          "options": ["2000", "2002", "2005", "2010"],
+          "correctAnswer": 1,
+          "explanation": "Symbiosis International University was established in 2002."
+        },
+        {
+          "question": "What type of university is SIU?",
+          "options": ["Government university", "Private university", "Central university", "State university"],
+          "correctAnswer": 1,
+          "explanation": "SIU is a leading private university."
+        },
+        {
+          "question": "In which area is SIU's main campus located?",
+          "options": ["Hadapsar", "Kothrud", "Lavale", "Baner"],
+          "correctAnswer": 2,
+          "explanation": "SIU's main campus is located in Lavale, Pune."
+        },
+        {
+          "question": "Which of these programs does SIU offer?",
+          "options": ["Only management", "Only engineering", "Management, law, engineering, media", "Only law"],
+          "correctAnswer": 2,
+          "explanation": "SIU offers diverse programs including management, law, engineering, and media."
+        },
+        {
+          "question": "What is SIU particularly known for?",
+          "options": ["Sports only", "International collaborations", "Research only", "Local programs only"],
+          "correctAnswer": 1,
+          "explanation": "SIU is particularly known for its strong international collaborations."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Rajiv Gandhi Zoological Park (Katraj Zoo)",
+      "category": "Tourist Place",
+      "description": "Rajiv Gandhi Zoological Park, commonly known as Katraj Zoo, is a popular zoological garden located in Katraj area of Pune. Established in 1999, the zoo houses various species of animals and birds. It's particularly famous for its snake park and is a favorite destination for families and children.",
+      "address": "Katraj, Pune, Maharashtra 411046",
+      "coordinates": {
+        "latitude": 18.4467,
+        "longitude": 73.8619
+      },
+      "established": "1999",
+      "keyFacts": [
+        "Established in 1999 in Katraj area",
+        "Houses various species of animals and birds",
+        "Famous for its snake park",
+        "Popular family and children's destination"
+      ],
+      "quiz": [
+        {
+          "question": "When was Katraj Zoo established?",
+          "options": ["1995", "1999", "2000", "2005"],
+          "correctAnswer": 1,
+          "explanation": "Rajiv Gandhi Zoological Park (Katraj Zoo) was established in 1999."
+        },
+        {
+          "question": "What is Katraj Zoo officially called?",
+          "options": ["Pune Zoo", "Katraj Zoological Park", "Rajiv Gandhi Zoological Park", "Maharashtra Zoo"],
+          "correctAnswer": 2,
+          "explanation": "The zoo is officially called Rajiv Gandhi Zoological Park."
+        },
+        {
+          "question": "What is Katraj Zoo particularly famous for?",
+          "options": ["Tiger park", "Snake park", "Elephant park", "Bird park"],
+          "correctAnswer": 1,
+          "explanation": "Katraj Zoo is particularly famous for its snake park."
+        },
+        {
+          "question": "In which area of Pune is the zoo located?",
+          "options": ["Hadapsar", "Katraj", "Kothrud", "Baner"],
+          "correctAnswer": 1,
+          "explanation": "The zoo is located in the Katraj area of Pune."
+        },
+        {
+          "question": "Who is the zoo's primary target audience?",
+          "options": ["Researchers only", "Students only", "Families and children", "Adults only"],
+          "correctAnswer": 2,
+          "explanation": "The zoo is a popular destination for families and children."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Pune-Okayama Friendship Garden",
+      "category": "Tourist Place",
+      "description": "Pune-Okayama Friendship Garden is a beautiful Japanese-style garden that symbolizes the friendship between Pune and Okayama city in Japan. Located near the Aga Khan Palace, this serene garden features traditional Japanese landscaping, a pond, bridges, and meditation areas. It's a perfect place for peaceful walks and photography.",
+      "address": "Aga Khan Palace Road, Yerwada, Pune, Maharashtra 411006",
+      "coordinates": {
+        "latitude": 18.5530,
+        "longitude": 73.8945
+      },
+      "established": "2004",
+      "keyFacts": [
+        "Symbolizes friendship between Pune and Okayama, Japan",
+        "Features authentic Japanese landscaping",
+        "Located near Aga Khan Palace",
+        "Perfect for peaceful walks and meditation"
+      ],
+      "quiz": [
+        {
+          "question": "Which two cities does this garden represent friendship between?",
+          "options": ["Pune and Tokyo", "Pune and Okayama", "Pune and Kyoto", "Pune and Osaka"],
+          "correctAnswer": 1,
+          "explanation": "The garden represents friendship between Pune and Okayama city in Japan."
+        },
+        {
+          "question": "When was the Pune-Okayama Friendship Garden established?",
+          "options": ["2000", "2004", "2006", "2010"],
+          "correctAnswer": 1,
+          "explanation": "The Pune-Okayama Friendship Garden was established in 2004."
+        },
+        {
+          "question": "What style of garden is it?",
+          "options": ["English garden", "French garden", "Japanese garden", "Mughal garden"],
+          "correctAnswer": 2,
+          "explanation": "It is a Japanese-style garden with traditional Japanese landscaping."
+        },
+        {
+          "question": "Near which famous monument is this garden located?",
+          "options": ["Shaniwar Wada", "Aga Khan Palace", "Sinhagad Fort", "Lal Mahal"],
+          "correctAnswer": 1,
+          "explanation": "The garden is located near the Aga Khan Palace."
+        },
+        {
+          "question": "What activities is the garden ideal for?",
+          "options": ["Sports activities", "Peaceful walks and meditation", "Shopping", "Dining"],
+          "correctAnswer": 1,
+          "explanation": "The garden is perfect for peaceful walks, meditation, and photography."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Phoenix MarketCity Pune",
+      "category": "Tourist Place",
+      "description": "Phoenix MarketCity is one of Pune's largest and most popular shopping malls. Located in Viman Nagar, it offers a wide range of shopping, dining, and entertainment options. The mall features international and domestic brands, a multiplex cinema, food court, and various entertainment facilities, making it a popular destination for families and young people.",
+      "address": "Viman Nagar, Pune, Maharashtra 411014",
+      "coordinates": {
+        "latitude": 18.5679,
+        "longitude": 73.9143
+      },
+      "established": "2013",
+      "keyFacts": [
+        "One of Pune's largest shopping malls",
+        "Located in Viman Nagar area",
+        "Features multiplex cinema and food court",
+        "Popular destination for shopping and entertainment"
+      ],
+      "quiz": [
+        {
+          "question": "When was Phoenix MarketCity Pune opened?",
+          "options": ["2010", "2013", "2015", "2017"],
+          "correctAnswer": 1,
+          "explanation": "Phoenix MarketCity Pune was opened in 2013."
+        },
+        {
+          "question": "In which area of Pune is Phoenix MarketCity located?",
+          "options": ["Hadapsar", "Viman Nagar", "Baner", "Kothrud"],
+          "correctAnswer": 1,
+          "explanation": "Phoenix MarketCity is located in Viman Nagar area of Pune."
+        },
+        {
+          "question": "What type of establishment is Phoenix MarketCity?",
+          "options": ["Office complex", "Shopping mall", "Hotel", "Hospital"],
+          "correctAnswer": 1,
+          "explanation": "Phoenix MarketCity is a shopping mall."
+        },
+        {
+          "question": "Which of these facilities can you find at Phoenix MarketCity?",
+          "options": ["Only shopping", "Multiplex cinema and food court", "Only restaurants", "Only entertainment"],
+          "correctAnswer": 1,
+          "explanation": "Phoenix MarketCity features multiplex cinema, food court, shopping, and entertainment facilities."
+        },
+        {
+          "question": "What is Phoenix MarketCity's significance in Pune?",
+          "options": ["Smallest mall", "One of the largest malls", "Only mall", "Oldest mall"],
+          "correctAnswer": 1,
+          "explanation": "Phoenix MarketCity is one of Pune's largest and most popular shopping malls."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Parvati Hill Temple",
+      "category": "Tourist Place",
+      "description": "Parvati Hill is one of the most prominent hills in Pune, located in the heart of the city. The hill houses the famous Parvati Temple dedicated to Goddess Parvati. From the hilltop, visitors can enjoy panoramic views of Pune city. The temple complex also includes other smaller temples and is a popular spot for both devotees and tourists.",
+      "address": "Parvati Hill, Pune, Maharashtra 411009",
+      "coordinates": {
+        "latitude": 18.5018,
+        "longitude": 73.8636
+      },
+      "established": "17th Century",
+      "keyFacts": [
+        "One of the highest points in central Pune",
+        "Offers panoramic views of the entire city",
+        "Houses multiple temples in the complex",
+        "Popular pilgrimage site and tourist attraction"
+      ],
+      "quiz": [
+        {
+          "question": "What is Parvati Hill primarily famous for?",
+          "options": ["Shopping mall", "Parvati Temple", "IT companies", "Sports complex"],
+          "correctAnswer": 1,
+          "explanation": "Parvati Hill is primarily famous for the Parvati Temple dedicated to Goddess Parvati."
+        },
+        {
+          "question": "What can visitors enjoy from the hilltop?",
+          "options": ["Beach views", "Mountain ranges", "Panoramic views of Pune city", "River views"],
+          "correctAnswer": 2,
+          "explanation": "From Parvati Hill, visitors can enjoy panoramic views of the entire Pune city."
+        },
+        {
+          "question": "In which century was the temple established?",
+          "options": ["16th Century", "17th Century", "18th Century", "19th Century"],
+          "correctAnswer": 1,
+          "explanation": "The Parvati Temple was established in the 17th Century."
+        },
+        {
+          "question": "What type of location is Parvati Hill in Pune?",
+          "options": ["On the outskirts", "One of the highest points in central Pune", "Underground", "Near the airport"],
+          "correctAnswer": 1,
+          "explanation": "Parvati Hill is one of the highest points in central Pune, located in the heart of the city."
+        },
+        {
+          "question": "Besides the main temple, what else can be found on Parvati Hill?",
+          "options": ["Only parking", "Multiple temples in the complex", "Shopping centers", "Hotels only"],
+          "correctAnswer": 1,
+          "explanation": "The Parvati Hill temple complex includes multiple temples besides the main Parvati Temple."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Fergusson College",
+      "category": "Educational Institute",
+      "description": "Fergusson College is one of Pune's most prestigious educational institutions, established in 1885. Named after Sir James Fergusson, the Governor of Bombay, the college is affiliated with the University of Pune and is known for its excellent academic programs in arts, science, and commerce. The college has a beautiful heritage campus and has produced many notable alumni.",
+      "address": "Fergusson College Road, Pune, Maharashtra 411004",
+      "coordinates": {
+        "latitude": 18.5314,
+        "longitude": 73.8370
+      },
+      "established": "1885",
+      "keyFacts": [
+        "Established in 1885, one of Pune's oldest colleges",
+        "Named after Sir James Fergusson, Governor of Bombay",
+        "Beautiful heritage campus with historic buildings",
+        "Renowned for arts, science, and commerce programs"
+      ],
+      "quiz": [
+        {
+          "question": "When was Fergusson College established?",
+          "options": ["1880", "1885", "1890", "1895"],
+          "correctAnswer": 1,
+          "explanation": "Fergusson College was established in 1885."
+        },
+        {
+          "question": "Who was Fergusson College named after?",
+          "options": ["A freedom fighter", "Sir James Fergusson", "A local king", "The founder"],
+          "correctAnswer": 1,
+          "explanation": "The college was named after Sir James Fergusson, who was the Governor of Bombay."
+        },
+        {
+          "question": "What was Sir James Fergusson's position?",
+          "options": ["Governor of Maharashtra", "Governor of Bombay", "Viceroy of India", "Local Administrator"],
+          "correctAnswer": 1,
+          "explanation": "Sir James Fergusson was the Governor of Bombay when the college was named after him."
+        },
+        {
+          "question": "Which programs is Fergusson College particularly known for?",
+          "options": ["Engineering only", "Medical only", "Arts, science, and commerce", "Law only"],
+          "correctAnswer": 2,
+          "explanation": "Fergusson College is renowned for its excellent programs in arts, science, and commerce."
+        },
+        {
+          "question": "What type of campus does Fergusson College have?",
+          "options": ["Modern glass buildings", "Heritage campus with historic buildings", "Underground campus", "Virtual campus"],
+          "correctAnswer": 1,
+          "explanation": "Fergusson College has a beautiful heritage campus with historic buildings."
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Pune Station (Pune Junction Railway Station)",
+      "category": "Transportation",
+      "description": "Pune Junction Railway Station is the main railway station serving Pune city and is one of the busiest railway stations in Maharashtra. Built during the British era, it serves as a major transportation hub connecting Pune to various cities across India. The station handles both passenger and freight traffic and is an important junction on the Central Railway network.",
+      "address": "Station Road, Ganj Peth, Pune, Maharashtra 411001",
+      "coordinates": {
+        "latitude": 18.5314,
+        "longitude": 73.8746
+      },
+      "established": "1858",
+      "keyFacts": [
+        "One of the busiest railway stations in Maharashtra",
+        "Built during British era in 1858",
+        "Major junction on Central Railway network",
+        "Connects Pune to cities across India"
+      ],
+      "quiz": [
+        {
+          "question": "When was Pune Railway Station established?",
+          "options": ["1855", "1858", "1860", "1865"],
+          "correctAnswer": 1,
+          "explanation": "Pune Junction Railway Station was established in 1858 during the British era."
+        },
+        {
+          "question": "Which railway network is Pune Station an important junction of?",
+          "options": ["Western Railway", "Central Railway", "Southern Railway", "Eastern Railway"],
+          "correctAnswer": 1,
+          "explanation": "Pune Station is an important junction on the Central Railway network."
+        },
+        {
+          "question": "In which area of Pune is the railway station located?",
+          "options": ["Camp", "Ganj Peth", "Shivajinagar", "Kothrud"],
+          "correctAnswer": 1,
+          "explanation": "Pune Junction Railway Station is located in Ganj Peth area."
+        },
+        {
+          "question": "What is the significance of Pune Station in Maharashtra?",
+          "options": ["Smallest station", "One of the busiest stations", "Only freight station", "Museum station"],
+          "correctAnswer": 1,
+          "explanation": "Pune Junction is one of the busiest railway stations in Maharashtra."
+        },
+        {
+          "question": "During which period was Pune Station built?",
+          "options": ["Maratha period", "British era", "Post-independence", "Medieval period"],
+          "correctAnswer": 1,
+          "explanation": "Pune Railway Station was built during the British era in 1858."
+        }
+      ]
+    }
+  ]
+}
