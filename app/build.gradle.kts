@@ -91,6 +91,9 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.generativeai)
 
+    // WebGL and 3D Graphics - Using Android's built-in OpenGL ES
+    // No external dependencies needed - OpenGL ES 2.0 is built into Android
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

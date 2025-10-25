@@ -23,6 +23,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.edai.data.model.PlaceQuizQuestion
 import com.example.edai.ui.viewmodel.PopularPlacesViewModel
 import com.example.edai.ui.viewmodel.QuizUiState
+import com.example.edai.ui.components.WebGLCharacterView
+import com.example.edai.ui.components.CharacterAnimationState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,13 +36,13 @@ fun PlaceQuizScreen(
 ) {
     val placeDetailState by viewModel.placeDetailState.collectAsStateWithLifecycle()
     val quizState by viewModel.quizState.collectAsStateWithLifecycle()
-    
+
     // Load place details when screen is first displayed or placeId changes
     LaunchedEffect(placeId) {
         // Always reload place details for the specific place
         viewModel.loadPlaceDetail(placeId)
     }
-    
+
     // Start quiz when place is loaded and it's a different place or quiz is empty
     LaunchedEffect(placeDetailState.place, placeId) {
         placeDetailState.place?.let { place ->
@@ -48,15 +50,15 @@ fun PlaceQuizScreen(
             // 1. No quiz is currently loaded, OR
             // 2. The quiz is for a different place, OR
             // 3. The quiz questions don't match the current place's questions
-            if (quizState.questions.isEmpty() || 
+            if (quizState.questions.isEmpty() ||
                 quizState.currentPlaceId != place.id ||
-                (quizState.questions.isNotEmpty() && place.quiz.isNotEmpty() && 
-                 place.quiz.first().question != quizState.questions.first().question)) {
+                (quizState.questions.isNotEmpty() && place.quiz.isNotEmpty() &&
+                        place.quiz.first().question != quizState.questions.first().question)) {
                 viewModel.startQuiz(place)
             }
         }
     }
-    
+
     Column(
         modifier = modifier.fillMaxSize()
     ) {
@@ -82,7 +84,7 @@ fun PlaceQuizScreen(
                 titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
             )
         )
-        
+
         when {
             placeDetailState.isLoading || quizState.isLoading -> {
                 Box(
@@ -98,7 +100,7 @@ fun PlaceQuizScreen(
                     }
                 }
             }
-            
+
             placeDetailState.error != null || quizState.error != null -> {
                 Card(
                     modifier = Modifier
@@ -161,7 +163,7 @@ fun PlaceQuizScreen(
                     }
                 }
             }
-            
+
             quizState.showResults -> {
                 QuizResultsContent(
                     quizState = quizState,
@@ -174,7 +176,7 @@ fun PlaceQuizScreen(
                     onFinish = onNavigateBack
                 )
             }
-            
+
             quizState.questions.isNotEmpty() -> {
                 QuizContent(
                     quizState = quizState,
@@ -206,7 +208,17 @@ private fun QuizContent(
         quizState.selectedAnswers[quizState.currentQuestionIndex]
     } else -1
     val isLastQuestion = quizState.currentQuestionIndex == quizState.questions.size - 1
-    
+
+    // Determine character animation state based on quiz progress
+    val characterAnimationState = remember(selectedAnswer, quizState.currentQuestionIndex) {
+        when {
+            selectedAnswer == -1 -> CharacterAnimationState.THINKING
+            selectedAnswer == currentQuestion.correctAnswer -> CharacterAnimationState.CORRECT_ANSWER
+            selectedAnswer != currentQuestion.correctAnswer -> CharacterAnimationState.WRONG_ANSWER
+            else -> CharacterAnimationState.IDLE
+        }
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -214,6 +226,46 @@ private fun QuizContent(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
+        // WebGL Character Section
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer
+            )
+        ) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                WebGLCharacterView(
+                    animationState = characterAnimationState,
+                    modifier = Modifier.fillMaxSize()
+                )
+
+                // Character status text overlay
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(8.dp)
+                ) {
+                    Text(
+                        text = when (characterAnimationState) {
+                            CharacterAnimationState.THINKING -> "🤔 Thinking..."
+                            CharacterAnimationState.CORRECT_ANSWER -> "🎉 Great job!"
+                            CharacterAnimationState.WRONG_ANSWER -> "💪 Keep trying!"
+                            else -> "👋 Hello!"
+                        },
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+        }
+
         // Progress Card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -237,14 +289,14 @@ private fun QuizContent(
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onPrimaryContainer
                     )
-                    
+
                     Text(
                         text = placeName,
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                     )
                 }
-                
+
                 // Progress bar
                 val progress = (quizState.currentQuestionIndex + 1).toFloat() / quizState.questions.size.toFloat()
                 LinearProgressIndicator(
@@ -255,7 +307,7 @@ private fun QuizContent(
                 )
             }
         }
-        
+
         // Question Card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -275,7 +327,7 @@ private fun QuizContent(
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(24.dp)
                     )
-                    
+
                     Text(
                         text = currentQuestion.question,
                         style = MaterialTheme.typography.headlineSmall,
@@ -285,34 +337,34 @@ private fun QuizContent(
                 }
             }
         }
-        
+
         // Options Cards
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             currentQuestion.options.forEachIndexed { index, option ->
                 val isSelected = selectedAnswer == index
-                
+
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { 
+                        .clickable {
                             onAnswerSelected(index)
                         },
                     elevation = CardDefaults.cardElevation(
                         defaultElevation = if (isSelected) 8.dp else 2.dp
                     ),
                     colors = CardDefaults.cardColors(
-                        containerColor = if (isSelected) 
-                            MaterialTheme.colorScheme.secondaryContainer 
-                        else 
+                        containerColor = if (isSelected)
+                            MaterialTheme.colorScheme.secondaryContainer
+                        else
                             MaterialTheme.colorScheme.surface
                     ),
-                    border = if (isSelected) 
+                    border = if (isSelected)
                         androidx.compose.foundation.BorderStroke(
-                            2.dp, 
+                            2.dp,
                             MaterialTheme.colorScheme.secondary
-                        ) 
+                        )
                     else null
                 ) {
                     Row(
@@ -328,9 +380,9 @@ private fun QuizContent(
                                 .size(32.dp)
                                 .clip(RoundedCornerShape(8.dp))
                                 .background(
-                                    if (isSelected) 
-                                        MaterialTheme.colorScheme.secondary 
-                                    else 
+                                    if (isSelected)
+                                        MaterialTheme.colorScheme.secondary
+                                    else
                                         MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
                                 ),
                             contentAlignment = Alignment.Center
@@ -339,23 +391,23 @@ private fun QuizContent(
                                 text = ('A' + index).toString(),
                                 style = MaterialTheme.typography.labelLarge,
                                 fontWeight = FontWeight.Bold,
-                                color = if (isSelected) 
-                                    MaterialTheme.colorScheme.onSecondary 
-                                else 
+                                color = if (isSelected)
+                                    MaterialTheme.colorScheme.onSecondary
+                                else
                                     MaterialTheme.colorScheme.onSurface
                             )
                         }
-                        
+
                         Text(
                             text = option,
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier.weight(1f),
-                            color = if (isSelected) 
-                                MaterialTheme.colorScheme.onSecondaryContainer 
-                            else 
+                            color = if (isSelected)
+                                MaterialTheme.colorScheme.onSecondaryContainer
+                            else
                                 MaterialTheme.colorScheme.onSurface
                         )
-                        
+
                         // Selection indicator
                         if (isSelected) {
                             Icon(
@@ -372,7 +424,7 @@ private fun QuizContent(
                 }
             }
         }
-        
+
         // Navigation Buttons
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -398,9 +450,9 @@ private fun QuizContent(
                     Spacer(modifier = Modifier.width(4.dp))
                     Text("Previous")
                 }
-                
+
                 Spacer(modifier = Modifier.width(16.dp))
-                
+
                 // Next/Finish button
                 Button(
                     onClick = if (isLastQuestion) onFinishQuiz else onNextQuestion,
@@ -417,7 +469,7 @@ private fun QuizContent(
                 }
             }
         }
-        
+
         // Quiz info
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -459,7 +511,16 @@ private fun QuizResultsContent(
     modifier: Modifier = Modifier
 ) {
     val percentage = (quizState.score.toFloat() / quizState.questions.size.toFloat() * 100).toInt()
-    
+
+    // Determine character animation state based on quiz results
+    val characterAnimationState = remember(percentage) {
+        when {
+            percentage >= 80 -> CharacterAnimationState.CELEBRATING
+            percentage >= 60 -> CharacterAnimationState.HAPPY
+            else -> CharacterAnimationState.ENCOURAGING
+        }
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -467,6 +528,61 @@ private fun QuizResultsContent(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
+        // WebGL Character Results Section
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(250.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = when {
+                    percentage >= 80 -> Color(0xFF4CAF50).copy(alpha = 0.1f)
+                    percentage >= 60 -> Color(0xFFFF9800).copy(alpha = 0.1f)
+                    else -> Color(0xFF2196F3).copy(alpha = 0.1f)
+                }
+            )
+        ) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                WebGLCharacterView(
+                    animationState = characterAnimationState,
+                    modifier = Modifier.fillMaxSize()
+                )
+
+                // Results message overlay
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(16.dp)
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(
+                            text = when (characterAnimationState) {
+                                CharacterAnimationState.CELEBRATING -> "🎉 Outstanding!"
+                                CharacterAnimationState.HAPPY -> "😊 Great work!"
+                                CharacterAnimationState.ENCOURAGING -> "💪 Keep learning!"
+                                else -> "👋 Well done!"
+                            },
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            textAlign = TextAlign.Center
+                        )
+                        Text(
+                            text = "Score: ${quizState.score}/${quizState.questions.size} ($percentage%)",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+            }
+        }
+
         // Results Header Card
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -498,7 +614,7 @@ private fun QuizResultsContent(
                         else -> Color(0xFFF44336)
                     }
                 )
-                
+
                 Text(
                     text = when {
                         percentage >= 80 -> "Excellent!"
@@ -509,14 +625,14 @@ private fun QuizResultsContent(
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
-                
+
                 Text(
                     text = placeName,
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center
                 )
-                
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -535,7 +651,7 @@ private fun QuizResultsContent(
                 }
             }
         }
-        
+
         // Performance Message
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -554,7 +670,7 @@ private fun QuizResultsContent(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
-                
+
                 Text(
                     text = when {
                         percentage >= 80 -> "You clearly know a lot about $placeName. You're well on your way to becoming a local expert!"
@@ -566,7 +682,6 @@ private fun QuizResultsContent(
                 )
             }
         }
-
 
         // Detailed Results
         Card(
@@ -582,19 +697,19 @@ private fun QuizResultsContent(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
-                
+
                 quizState.questions.forEachIndexed { index, question ->
                     val userAnswer = if (index < quizState.selectedAnswers.size) {
                         quizState.selectedAnswers[index]
                     } else -1
                     val isCorrect = userAnswer == question.correctAnswer
-                    
+
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         colors = CardDefaults.cardColors(
-                            containerColor = if (isCorrect) 
+                            containerColor = if (isCorrect)
                                 MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f)
-                            else 
+                            else
                                 MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f)
                         )
                     ) {
@@ -609,13 +724,13 @@ private fun QuizResultsContent(
                                 Icon(
                                     if (isCorrect) Icons.Default.CheckCircle else Icons.Default.Cancel,
                                     contentDescription = null,
-                                    tint = if (isCorrect) 
-                                        Color(0xFF4CAF50) 
-                                    else 
+                                    tint = if (isCorrect)
+                                        Color(0xFF4CAF50)
+                                    else
                                         Color(0xFFF44336),
                                     modifier = Modifier.size(20.dp)
                                 )
-                                
+
                                 Column(
                                     modifier = Modifier.weight(1f),
                                     verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -625,7 +740,7 @@ private fun QuizResultsContent(
                                         style = MaterialTheme.typography.bodyMedium,
                                         fontWeight = FontWeight.Medium
                                     )
-                                    
+
                                     if (!isCorrect && userAnswer >= 0 && userAnswer < question.options.size) {
                                         Text(
                                             text = "Your answer: ${question.options[userAnswer]}",
@@ -639,7 +754,7 @@ private fun QuizResultsContent(
                                             fontWeight = FontWeight.Medium
                                         )
                                     }
-                                    
+
                                     Text(
                                         text = question.explanation,
                                         style = MaterialTheme.typography.bodySmall,
@@ -653,7 +768,7 @@ private fun QuizResultsContent(
                 }
             }
         }
-        
+
         // Action Buttons
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -671,7 +786,7 @@ private fun QuizResultsContent(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("Retake Quiz")
                 }
-                
+
                 OutlinedButton(
                     onClick = onFinish,
                     modifier = Modifier.fillMaxWidth()
