@@ -19,12 +19,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.edai.data.model.PlaceQuizQuestion
 import com.example.edai.ui.viewmodel.PopularPlacesViewModel
 import com.example.edai.ui.viewmodel.QuizUiState
 import com.example.edai.ui.components.WebGLCharacterView
 import com.example.edai.ui.components.CharacterAnimationState
+import com.example.edai.ui.components.AnimatedLottieCharacter
+import com.example.edai.ui.components.LottieAnimationState
+import com.example.edai.ui.components.CharacterPosition
+import com.example.edai.ui.components.CharacterSize
+import com.example.edai.ui.components.rememberAnimatedCharacterPosition
+import com.example.edai.ui.components.rememberAnimatedCharacterSize
+import com.example.edai.ui.components.CharacterSpeechBubble
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -209,105 +218,133 @@ private fun QuizContent(
     } else -1
     val isLastQuestion = quizState.currentQuestionIndex == quizState.questions.size - 1
 
-    // Determine character animation state based on quiz progress
-    val characterAnimationState = remember(selectedAnswer, quizState.currentQuestionIndex) {
+    // Character animation state management with Lottie
+    var currentAnimationState by remember { mutableStateOf<LottieAnimationState>(LottieAnimationState.Idle) }
+    var characterPosition by remember { mutableStateOf(CharacterPosition(x = 16.dp, y = 0.dp)) }
+    var characterSize by remember { mutableStateOf(CharacterSize(width = 200.dp, height = 200.dp)) }
+    var showSpeechBubble by remember { mutableStateOf(false) }
+    var speechBubbleMessage by remember { mutableStateOf("") }
+    
+    // Animation state based on quiz progress
+    val targetAnimationState = remember(selectedAnswer, quizState.currentQuestionIndex) {
         when {
-            selectedAnswer == -1 -> CharacterAnimationState.THINKING
-            selectedAnswer == currentQuestion.correctAnswer -> CharacterAnimationState.CORRECT_ANSWER
-            selectedAnswer != currentQuestion.correctAnswer -> CharacterAnimationState.WRONG_ANSWER
-            else -> CharacterAnimationState.IDLE
+            selectedAnswer == -1 -> LottieAnimationState.Idle
+            selectedAnswer == currentQuestion.correctAnswer -> LottieAnimationState.Celebrating
+            selectedAnswer != currentQuestion.correctAnswer -> LottieAnimationState.Thinking
+            else -> LottieAnimationState.Idle
         }
     }
+    
+    // Update animation state with effects
+    LaunchedEffect(targetAnimationState) {
+        when (targetAnimationState) {
+            is LottieAnimationState.Celebrating -> {
+                // Move to center and grow
+                characterPosition = CharacterPosition(x = 150.dp, y = 200.dp)
+                characterSize = CharacterSize(width = 300.dp, height = 300.dp)
+                currentAnimationState = LottieAnimationState.Celebrating
+                showSpeechBubble = true
+                speechBubbleMessage = "Great job! 🎉"
+                delay(2000)
+                
+                // Return to top
+                characterPosition = CharacterPosition(x = 16.dp, y = 0.dp)
+                characterSize = CharacterSize(width = 200.dp, height = 200.dp)
+                showSpeechBubble = false
+                currentAnimationState = LottieAnimationState.Idle
+            }
+            
+            is LottieAnimationState.Thinking -> {
+                // Move to wrong answer area and shake
+                val shakeOffset = ((-10..10).random()).dp
+                characterPosition = CharacterPosition(x = 150.dp, y = 300.dp + shakeOffset)
+                currentAnimationState = LottieAnimationState.Thinking
+                showSpeechBubble = true
+                speechBubbleMessage = "Try again! 💪"
+                delay(1500)
+                
+                // Return to top
+                characterPosition = CharacterPosition(x = 16.dp, y = 0.dp)
+                characterSize = CharacterSize(width = 200.dp, height = 200.dp)
+                showSpeechBubble = false
+                currentAnimationState = LottieAnimationState.Idle
+            }
+            
+            is LottieAnimationState.Encouraging -> {
+                // Bounce animation for next question
+                for (i in 0..2) {
+                    characterPosition = CharacterPosition(x = 100.dp, y = (i % 2).times(100).dp)
+                    delay(300)
+                }
+                characterPosition = CharacterPosition(x = 16.dp, y = 0.dp)
+                currentAnimationState = LottieAnimationState.Idle
+            }
+            
+            else -> {
+                characterPosition = CharacterPosition(x = 16.dp, y = 0.dp)
+                characterSize = CharacterSize(width = 200.dp, height = 200.dp)
+                currentAnimationState = LottieAnimationState.Idle
+            }
+        }
+    }
+    
+    // Animate position and size changes smoothly
+    val animatedPosition = rememberAnimatedCharacterPosition(characterPosition)
+    val animatedSize = rememberAnimatedCharacterSize(characterSize)
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(20.dp)
+    Box(
+        modifier = modifier.fillMaxSize()
     ) {
-        // WebGL Character Section
-        Card(
+        // Background Layer - Quiz Content
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.primaryContainer
-            )
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp)
+                .padding(top = 220.dp), // Space for character at top
+            verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                WebGLCharacterView(
-                    animationState = characterAnimationState,
-                    modifier = Modifier.fillMaxSize(),
-                    modelFilename = "character.obj" // Custom 3D model
+            // Progress Card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer
                 )
-
-                // Character status text overlay
-                Box(
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(8.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    Text(
-                        text = when (characterAnimationState) {
-                            CharacterAnimationState.THINKING -> "🤔 Thinking..."
-                            CharacterAnimationState.CORRECT_ANSWER -> "🎉 Great job!"
-                            CharacterAnimationState.WRONG_ANSWER -> "💪 Keep trying!"
-                            else -> "👋 Hello!"
-                        },
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        textAlign = TextAlign.Center
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Question ${quizState.currentQuestionIndex + 1} of ${quizState.questions.size}",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+
+                        Text(
+                            text = placeName,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
+                        )
+                    }
+
+                    // Progress bar
+                    val progress = (quizState.currentQuestionIndex + 1).toFloat() / quizState.questions.size.toFloat()
+                    LinearProgressIndicator(
+                        progress = { progress },
+                        modifier = Modifier.fillMaxWidth(),
+                        color = MaterialTheme.colorScheme.secondary,
+                        trackColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.3f)
                     )
                 }
             }
-        }
-
-        // Progress Card
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.primaryContainer
-            )
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Question ${quizState.currentQuestionIndex + 1} of ${quizState.questions.size}",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-
-                    Text(
-                        text = placeName,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
-                    )
-                }
-
-                // Progress bar
-                val progress = (quizState.currentQuestionIndex + 1).toFloat() / quizState.questions.size.toFloat()
-                LinearProgressIndicator(
-                    progress = { progress },
-                    modifier = Modifier.fillMaxWidth(),
-                    color = MaterialTheme.colorScheme.secondary,
-                    trackColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.3f)
-                )
-            }
-        }
 
         // Question Card
         Card(
@@ -500,6 +537,29 @@ private fun QuizContent(
                 )
             }
         }
+        }
+        
+        // Foreground Layer - Animated Lottie Character (can move anywhere)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(100f) // Keep character on top
+        ) {
+            AnimatedLottieCharacter(
+                state = currentAnimationState,
+                position = animatedPosition,
+                size = animatedSize,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+            )
+        }
+        
+        // Speech bubble
+        CharacterSpeechBubble(
+            message = speechBubbleMessage,
+            visible = showSpeechBubble,
+            position = animatedPosition
+        )
     }
 }
 
@@ -550,7 +610,7 @@ private fun QuizResultsContent(
                 WebGLCharacterView(
                     animationState = characterAnimationState,
                     modifier = Modifier.fillMaxSize(),
-                    modelFilename = "cartoon_character.obj" // Custom 3D model
+                    modelFilename = "ant-character.obj" // Custom 3D model
                 )
 
                 // Results message overlay
