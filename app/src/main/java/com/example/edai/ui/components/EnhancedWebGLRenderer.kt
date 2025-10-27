@@ -1,5 +1,6 @@
 package com.example.edai.ui.components
 
+import android.content.Context
 import android.opengl.GLES20
 import android.opengl.Matrix
 import android.opengl.GLSurfaceView
@@ -9,7 +10,10 @@ import javax.microedition.khronos.opengles.GL10
 /**
  * Enhanced WebGL Renderer with sophisticated character animations
  */
-class EnhancedWebGLRenderer : GLSurfaceView.Renderer {
+class EnhancedWebGLRenderer(
+    private val context: Context? = null,
+    private val modelFilename: String? = null
+) : GLSurfaceView.Renderer {
     private var animationState = CharacterAnimationState.IDLE
     private var animationTime = 0f
     private var characterModel: CharacterModel? = null
@@ -69,8 +73,12 @@ class EnhancedWebGLRenderer : GLSurfaceView.Renderer {
             enableTransparency = true
         )
 
-        // Initialize character model
-        characterModel = CharacterModel()
+        // Initialize character model (with optional custom model)
+        characterModel = if (context != null && modelFilename != null) {
+            CharacterModel(context, "models/$modelFilename")
+        } else {
+            CharacterModel()
+        }
 
         // Initialize shaders
         initializeShaders()

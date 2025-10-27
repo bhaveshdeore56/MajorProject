@@ -242,7 +242,8 @@ private fun QuizContent(
             ) {
                 WebGLCharacterView(
                     animationState = characterAnimationState,
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    modelFilename = "character.obj" // Custom 3D model
                 )
 
                 // Character status text overlay
@@ -548,7 +549,8 @@ private fun QuizResultsContent(
             ) {
                 WebGLCharacterView(
                     animationState = characterAnimationState,
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    modelFilename = "cartoon_character.obj" // Custom 3D model
                 )
 
                 // Results message overlay

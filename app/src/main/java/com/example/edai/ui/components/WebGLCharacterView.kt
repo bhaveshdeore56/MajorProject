@@ -39,13 +39,14 @@ enum class CharacterAnimationState {
 fun WebGLCharacterView(
     animationState: CharacterAnimationState = CharacterAnimationState.IDLE,
     modifier: Modifier = Modifier,
-    onCharacterReady: (() -> Unit)? = null
+    onCharacterReady: (() -> Unit)? = null,
+    modelFilename: String? = null
 ) {
     val context = LocalContext.current
 
     AndroidView(
         factory = { ctx ->
-            WebGLCharacterGLSurfaceView(ctx).apply {
+            WebGLCharacterGLSurfaceView(ctx, modelFilename).apply {
                 setAnimationState(animationState)
                 onCharacterReady?.let { callback ->
                     setOnCharacterReadyCallback(callback)
@@ -62,7 +63,7 @@ fun WebGLCharacterView(
 /**
  * Custom GLSurfaceView for WebGL character rendering
  */
-class WebGLCharacterGLSurfaceView(context: Context) : GLSurfaceView(context) {
+class WebGLCharacterGLSurfaceView(context: Context, private val modelFilename: String? = null) : GLSurfaceView(context) {
     private var renderer: EnhancedWebGLRenderer? = null
     private var onCharacterReadyCallback: (() -> Unit)? = null
 
@@ -70,8 +71,8 @@ class WebGLCharacterGLSurfaceView(context: Context) : GLSurfaceView(context) {
         // Set OpenGL ES version
         setEGLContextClientVersion(2)
 
-        // Set renderer
-        renderer = EnhancedWebGLRenderer()
+        // Set renderer with model filename
+        renderer = EnhancedWebGLRenderer(context, modelFilename)
         setRenderer(renderer)
 
         // Set render mode to continuous

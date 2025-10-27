@@ -1,6 +1,8 @@
 package com.example.edai.ui.components
 
+import android.content.Context
 import android.opengl.GLES20
+import android.util.Log
 // Removed JOML dependency - using Android's built-in OpenGL ES
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -8,10 +10,11 @@ import java.nio.FloatBuffer
 
 /**
  * 3D Character Model with vertices, colors, and animations
+ * Supports both procedural generation and loading from OBJ files
  */
-class CharacterModel {
+class CharacterModel(private val context: Context? = null, private val modelFilename: String? = null) {
 
-    // Character parts
+    // Character parts - either loaded from file or procedurally generated
     private val headVertices: FloatArray
     private val bodyVertices: FloatArray
     private val armLeftVertices: FloatArray
@@ -31,21 +34,106 @@ class CharacterModel {
     private var armRightRotation = 0f
     private var legLeftRotation = 0f
     private var legRightRotation = 0f
+    
+    // Loaded mesh data (if loading from file)
+    private var loadedMeshes: Map<String, Mesh>? = null
 
     init {
-        // Initialize character parts
-        headVertices = createHeadVertices()
-        bodyVertices = createBodyVertices()
-        armLeftVertices = createArmVertices()
-        armRightVertices = createArmVertices()
-        legLeftVertices = createLegVertices()
-        legRightVertices = createLegVertices()
+        if (modelFilename != null && context != null) {
+            // Try to load from file
+            loadFromFile(context, modelFilename)
+        }
+        
+        // Initialize character parts (either from file or procedurally)
+        if (loadedMeshes == null) {
+            // Fallback to procedural generation
+            headVertices = createHeadVertices()
+            bodyVertices = createBodyVertices()
+            armLeftVertices = createArmVertices()
+            armRightVertices = createArmVertices()
+            legLeftVertices = createLegVertices()
+            legRightVertices = createLegVertices()
+        } else {
+            // Use loaded meshes
+            val headMesh = loadedMeshes!!["head"] ?: createMeshFromVertices(createHeadVertices())
+            val bodyMesh = loadedMeshes!!["body"] ?: createMeshFromVertices(createBodyVertices())
+            val armLMesh = loadedMeshes!!["armLeft"] ?: createMeshFromVertices(createArmVertices())
+            val armRMesh = loadedMeshes!!["armRight"] ?: createMeshFromVertices(createArmVertices())
+            val legLMesh = loadedMeshes!!["legLeft"] ?: createMeshFromVertices(createLegVertices())
+            val legRMesh = loadedMeshes!!["legRight"] ?: createMeshFromVertices(createLegVertices())
+            
+            headVertices = extractVertices(headMesh)
+            bodyVertices = extractVertices(bodyMesh)
+            armLeftVertices = extractVertices(armLMesh)
+            armRightVertices = extractVertices(armRMesh)
+            legLeftVertices = extractVertices(legLMesh)
+            legRightVertices = extractVertices(legRMesh)
+        }
 
         // Initialize colors
         headColors = createHeadColors()
         bodyColors = createBodyColors()
         armColors = createArmColors()
         legColors = createLegColors()
+    }
+    
+    private fun loadFromFile(context: Context, filename: String) {
+        try {
+            val model = ModelLoader.loadModel(context, filename)
+            if (model != null) {
+                // For now, we'll use the entire model for the body
+                // In a full implementation, you'd parse separate parts
+                loadedMeshes = mapOf(
+                    "head" to createMeshFromVertices(createHeadVertices()),
+                    "body" to ModelLoader.createMeshFromModel(model),
+                    "armLeft" to createMeshFromVertices(createArmVertices()),
+                    "armRight" to createMeshFromVertices(createArmVertices()),
+                    "legLeft" to createMeshFromVertices(createLegVertices()),
+                    "legRight" to createMeshFromVertices(createLegVertices())
+                )
+                Log.d("CharacterModel", "Successfully loaded model from $filename")
+            }
+        } catch (e: Exception) {
+            Log.e("CharacterModel", "Failed to load model: $filename", e)
+        }
+    }
+    
+    private fun createMeshFromVertices(vertices: FloatArray): Mesh {
+        val buffer = ByteBuffer.allocateDirect(vertices.size * 4)
+            .order(ByteOrder.nativeOrder())
+            .asFloatBuffer()
+        buffer.put(vertices)
+        buffer.position(0)
+        
+        // Create dummy normals
+        val normalData = FloatArray(vertices.size)
+        for (i in vertices.indices step 3) {
+            normalData[i] = 0f
+            normalData[i + 1] = 1f
+            normalData[i + 2] = 0f
+        }
+        val normals = ByteBuffer.allocateDirect(normalData.size * 4)
+            .order(ByteOrder.nativeOrder())
+            .asFloatBuffer()
+        normals.put(normalData)
+        normals.position(0)
+        
+        // Create dummy tex coords
+        val texCoordData = FloatArray((vertices.size / 3) * 2)
+        val texCoords = ByteBuffer.allocateDirect(texCoordData.size * 4)
+            .order(ByteOrder.nativeOrder())
+            .asFloatBuffer()
+        texCoords.put(texCoordData)
+        texCoords.position(0)
+        
+        return Mesh(buffer, normals, texCoords, vertices.size / 3)
+    }
+    
+    private fun extractVertices(mesh: Mesh): FloatArray {
+        val array = FloatArray(mesh.vertexCount * 3)
+        mesh.vertices.get(array)
+        mesh.vertices.position(0)
+        return array
     }
 
     private fun createHeadVertices(): FloatArray {

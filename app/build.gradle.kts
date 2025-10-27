@@ -74,6 +74,9 @@ dependencies {
     // Image Loading
     implementation("io.coil-kt:coil-compose:2.5.0")
 
+    // Lottie Animations
+    implementation("com.airbnb.android:lottie-compose:6.3.0")
+
     // Gemini AI
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 
